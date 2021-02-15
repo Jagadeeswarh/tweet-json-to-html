@@ -53,9 +53,11 @@ article.main {
             width: 100%;
             margin: 10px 0 15px 0;
             & > a {
-                display: inline-flex;
+                display: inline-flex;   
+                width: 100%;
                 & > div {
                     float: left;
+                    width: 100%;
                 }
                 & > .profile_image {
                     margin-right: 10px;
@@ -66,7 +68,8 @@ article.main {
                     }
                 }
                 & > .profile {
-                    width: auto;
+                    width: 100%;
+                    margin: 0;
                     & > div {
                         & > div {
                             & > div {
@@ -90,8 +93,9 @@ article.main {
                                 }
                             }
                             & > .logo {
-                                margin: 10px auto;
+                                display: block;
                                 float: right;
+                                margin: 0px 0px 0px auto;
                             }
                         }
                         & > .username {
@@ -114,11 +118,12 @@ article.main {
             padding-bottom: 10px;
         }
         & > article.include {
+            display: none;
             width: 95%; 
             max-width: 566px;
             margin-top: 10px;
             border: {
-                width: 1px;
+                width: 0px;
                 style: solid;
                 color: $gray-color;
                 radius: 15px;
