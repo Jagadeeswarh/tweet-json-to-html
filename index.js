@@ -92,11 +92,11 @@ module.exports = async (tweet, bg = "default") => {
 
   main = main.replace(
     "%RETWEETS%",
-    (tweet.data.public_metrics && tweet.data.public_metrics.retweet_count) ? formatNumber(tweet.data.public_metrics.retweet_count) : ""
+    (tweet.data.public_metrics && tweet.data.public_metrics.retweet_count) ? formatNumber(tweet.data.public_metrics.retweet_count) : "-"
   );
   main = main.replace(
     "%LIKES%",
-    (tweet.data.public_metrics && tweet.data.public_metrics.like_count) ? formatNumber(tweet.data.public_metrics.like_count) : ""
+    (tweet.data.public_metrics && tweet.data.public_metrics.like_count) ? formatNumber(tweet.data.public_metrics.like_count) : "-"
   );
 
   //

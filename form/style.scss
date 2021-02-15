@@ -51,7 +51,7 @@ article.main {
         & > header {
             height: 49px;
             width: 100%;
-            margin: 10px 0 5px 0;
+            margin: 10px 0 15px 0;
             & > a {
                 display: inline-flex;
                 & > div {
@@ -100,16 +100,17 @@ article.main {
                 }
             }
         }
-        & > main {
+        & > div.body {
             margin-top: 15px;
             font-size: 15px;
             width: 100%;
             color: $text-color;
-            line-height: 1.3125;
+            line-height: 1.7;
             white-space: pre-wrap;
         }
         & > article.include {
-            width: 566px;
+            width: 95%; 
+            max-width: 566px;
             margin-top: 10px;
             border: {
                 width: 1px;
@@ -228,7 +229,7 @@ article.main {
                 }
             }
             & > .tweet {
-                display: block;
+                display: none;
                 padding: 10px;
                 & > header {
                     height: 20px;
@@ -277,7 +278,7 @@ article.main {
                     margin-top: 5px;
                     font-size: 15px;
                     color: $text-color;
-                    line-height: 1.3125;
+                    line-height: 1.7;
                     white-space: pre-wrap;
                     & > footer {
                         color: $href-color;

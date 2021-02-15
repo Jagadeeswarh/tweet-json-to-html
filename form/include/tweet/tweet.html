@@ -1,14 +1,19 @@
-<a class="tweet" href="%REF_LINK%" target="_blank">
+<a class="tweet" href="%REF_LINK%" target="_blank" style="display:none;">
     <header>
         <div class="profile_image">
             <img src="%PROFILE_IMAGE%" />
         </div>
         <div class="profile">
-            <div class="name">%NAME%</div>%VERIFIED%
-            <div class="username">%USER_NAME%</div>
-            <div>&nbsp;·&nbsp;</div>
-            <div class="date">%DATE%</div>
+            <div>
+                <div>
+                    <div class="name">%NAME%</div>%VERIFIED%
+                </div>
+                <div class="username">%USER_NAME%</div>
+                <div>&nbsp;·&nbsp;</div>
+                <div class="date">%DATE%</div>
+            </div>
         </div>
     </header>
-    <main>%TEXT%<footer>%ATTACHMENT%</footer></main>
+    <div class="main">%TEXT%</div>
+    <footer>%ATTACHMENT%</footer>
 </a>
