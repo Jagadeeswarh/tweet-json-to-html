@@ -89,13 +89,14 @@ module.exports = async (tweet, bg = "default") => {
   main = main.replace("%TIME%", created_at.format(locale.datetime.LT));
   main = main.replace("%DATE%", created_at.format(locale.datetime.ll));
   main = main.replace("%SOURCE%", tweet.data.source);
+
   main = main.replace(
     "%RETWEETS%",
-    formatNumber(tweet.data.public_metrics.retweet_count)
+    (tweet.data.public_metrics && tweet.data.public_metrics.retweet_count) ? formatNumber(tweet.data.public_metrics.retweet_count) : ""
   );
   main = main.replace(
     "%LIKES%",
-    formatNumber(tweet.data.public_metrics.like_count)
+    (tweet.data.public_metrics && tweet.data.public_metrics.like_count) ? formatNumber(tweet.data.public_metrics.like_count) : ""
   );
 
   //
