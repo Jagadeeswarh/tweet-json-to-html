@@ -89,6 +89,10 @@ article.main {
                                     fill: currentcolor;
                                 }
                             }
+                            & > .logo {
+                                margin: 10px auto;
+                                float: right;
+                            }
                         }
                         & > .username {
                             font-size: 14px;
@@ -107,6 +111,7 @@ article.main {
             color: $text-color;
             line-height: 1.7;
             white-space: pre-wrap;
+            padding-bottom: 10px;
         }
         & > article.include {
             width: 95%; 
@@ -383,6 +388,8 @@ article.main {
             color: $info-color;
             font-size: 15px;
             width: 100%;
+            padding-top: 10px;
+            border-top: 1px solid #e6ecf0;
             & > b {
                 color: black;
                 font-size: 14px;

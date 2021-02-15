@@ -230,87 +230,88 @@ module.exports = async (tweet, bg = "default") => {
 
     includes.push(include_poll);
   }
+  
+// For now not considering referenced tweets
+//   // Check if reference tweet exist
+//   if (tweet.data.referenced_tweets && tweet.data.referenced_tweets.length > 0) {
+//     // Get reference tweet data
+//     const ref_tweet = tweet.includes.tweets.find(
+//       (o) => o.id === tweet.data.referenced_tweets[0].id
+//     );
 
-  // Check if reference tweet exist
-  if (tweet.data.referenced_tweets && tweet.data.referenced_tweets.length > 0) {
-    // Get reference tweet data
-    const ref_tweet = tweet.includes.tweets.find(
-      (o) => o.id === tweet.data.referenced_tweets[0].id
-    );
+//     // Arranging reference tweet data
+//     const ref_author = tweet.includes.users.find(
+//       (o) => o.id === ref_tweet.author_id
+//     );
+//     const ref_created_at = moment(ref_tweet.created_at);
+//     const ref_text = ref_tweet.text.replace(
+//       / https?:\/\/t.co\/[a-zA-Z0-9]*$/,
+//       ""
+//     );
+//     const ref_text_tagged = ref_text.replace(/\n/g, "<br />");
+//     const ref_link = `https://twitter.com/${ref_author.username}/status/${ref_tweet.id}`;
 
-    // Arranging reference tweet data
-    const ref_author = tweet.includes.users.find(
-      (o) => o.id === ref_tweet.author_id
-    );
-    const ref_created_at = moment(ref_tweet.created_at);
-    const ref_text = ref_tweet.text.replace(
-      / https?:\/\/t.co\/[a-zA-Z0-9]*$/,
-      ""
-    );
-    const ref_text_tagged = ref_text.replace(/\n/g, "<br />");
-    const ref_link = `https://twitter.com/${ref_author.username}/status/${ref_tweet.id}`;
+//     // Loading the reference tweet form
+//     let include_ref = fs.readFileSync(
+//       path.join(__dirname, "form", "include", "tweet", "tweet.html"),
+//       "utf-8"
+//     );
 
-    // Loading the reference tweet form
-    let include_ref = fs.readFileSync(
-      path.join(__dirname, "form", "include", "tweet", "tweet.html"),
-      "utf-8"
-    );
+//     // Filling data in the form
+//     include_ref = include_ref.replace("%REF_LINK%", ref_link);
+//     include_ref = include_ref.replace(
+//       "%PROFILE_IMAGE%",
+//       ref_author.profile_image_url
+//     );
+//     include_ref = include_ref.replace("%NAME%", ref_author.name);
+//     include_ref = ref_author.verified
+//       ? include_ref.replace("%VERIFIED%", verified)
+//       : include_ref.replace("%VERIFIED%", "");
+//     include_ref = include_ref.replace(
+//       "%USER_NAME%",
+//       ref_author.username.includes("@")
+//         ? ref_author.username
+//         : "@" + ref_author.username
+//     );
+//     include_ref = include_ref.replace("%TEXT%", ref_text_tagged);
+//     include_ref = include_ref.replace(
+//       "%DATE%",
+//       ref_created_at.format(locale.datetime.lmd)
+//     );
+//     if (ref_tweet.attachments) {
+//       if (ref_tweet.attachments.media_keys) {
+//         if (
+//           ref_tweet.attachments.media_keys.length > 1 ||
+//           ref_tweet.attachments.media_keys[0].split("_")[0] === "3"
+//         ) {
+//           include_ref = include_ref.replace(
+//             "%ATTACHMENT%",
+//             locale.include["image"]
+//           );
+//         } else if (ref_tweet.attachments.media_keys[0].split("_")[0] === "7") {
+//           include_ref = include_ref.replace(
+//             "%ATTACHMENT%",
+//             locale.include["video"]
+//           );
+//         } else {
+//           include_ref = include_ref.replace(
+//             "%ATTACHMENT%",
+//             locale.include["media"]
+//           );
+//         }
+//       } else if (ref_tweet.attachments.poll_ids) {
+//         include_ref = include_ref.replace(
+//           "%ATTACHMENT%",
+//           locale.include["poll"]
+//         );
+//       }
+//     } else {
+//       include_ref = include_ref.replace("%ATTACHMENT%", "");
+//     }
 
-    // Filling data in the form
-    include_ref = include_ref.replace("%REF_LINK%", ref_link);
-    include_ref = include_ref.replace(
-      "%PROFILE_IMAGE%",
-      ref_author.profile_image_url
-    );
-    include_ref = include_ref.replace("%NAME%", ref_author.name);
-    include_ref = ref_author.verified
-      ? include_ref.replace("%VERIFIED%", verified)
-      : include_ref.replace("%VERIFIED%", "");
-    include_ref = include_ref.replace(
-      "%USER_NAME%",
-      ref_author.username.includes("@")
-        ? ref_author.username
-        : "@" + ref_author.username
-    );
-    include_ref = include_ref.replace("%TEXT%", ref_text_tagged);
-    include_ref = include_ref.replace(
-      "%DATE%",
-      ref_created_at.format(locale.datetime.lmd)
-    );
-    if (ref_tweet.attachments) {
-      if (ref_tweet.attachments.media_keys) {
-        if (
-          ref_tweet.attachments.media_keys.length > 1 ||
-          ref_tweet.attachments.media_keys[0].split("_")[0] === "3"
-        ) {
-          include_ref = include_ref.replace(
-            "%ATTACHMENT%",
-            locale.include["image"]
-          );
-        } else if (ref_tweet.attachments.media_keys[0].split("_")[0] === "7") {
-          include_ref = include_ref.replace(
-            "%ATTACHMENT%",
-            locale.include["video"]
-          );
-        } else {
-          include_ref = include_ref.replace(
-            "%ATTACHMENT%",
-            locale.include["media"]
-          );
-        }
-      } else if (ref_tweet.attachments.poll_ids) {
-        include_ref = include_ref.replace(
-          "%ATTACHMENT%",
-          locale.include["poll"]
-        );
-      }
-    } else {
-      include_ref = include_ref.replace("%ATTACHMENT%", "");
-    }
-
-    const html_include_ref = include_form.replace("%INCLUDE%", include_ref);
-    includes.push(html_include_ref);
-  }
+//     const html_include_ref = include_form.replace("%INCLUDE%", include_ref);
+//     includes.push(html_include_ref);
+//   }
 
   const html_includes = includes.join("");
   main = main.replace("%INCLUDES%", html_includes);
