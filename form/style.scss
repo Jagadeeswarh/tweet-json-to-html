@@ -5,8 +5,8 @@ $background-color: rgb(255, 255, 255);
 $border-color: rgb(230, 236, 240);
 $text-color: rgb(20, 23, 26);
 $twitter-color: rgba(29, 161, 242, 1.00);
-$info-color: rgb(101, 119, 134);
-$href-color: rgb(27, 149, 224);
+$info-color: rgb(128, 128, 128, 1);
+$href-color: rgb(15, 121, 254);
 $gray-color: rgb(204, 214, 221);
 $poll-top-color: rgb(113, 201, 248);
 @if $bg == 'dim' {
@@ -31,9 +31,12 @@ a {
     }
 }
 
+article{
+    font-family: 'Helvetica,sans-serif';
+}
+
 article.main {
     width: 598px;
-    font-family: $font;
     background-color: $background-color;
     border: {
         width: 1px;
@@ -41,7 +44,9 @@ article.main {
         color: $border-color;
     }
     & > div {
-        width: 568px;
+        width: 95%; 
+        max-width: 568px;
+        display: table-cell;
         padding: 0 15px;
         & > header {
             height: 49px;
@@ -69,7 +74,7 @@ article.main {
                             }
                             & > .name {
                                 font: {
-                                    size: 15px;
+                                    size: 16px;
                                     weight: bold;
                                 }
                                 color: $text-color;
@@ -86,7 +91,7 @@ article.main {
                             }
                         }
                         & > .username {
-                            font-size: 15px;
+                            font-size: 14px;
                             font-weight: 400;
                             color: $info-color;
                             line-height: 19.3px;
@@ -97,7 +102,7 @@ article.main {
         }
         & > main {
             margin-top: 15px;
-            font-size: 18px;
+            font-size: 15px;
             width: 100%;
             color: $text-color;
             line-height: 1.3125;
@@ -377,6 +382,10 @@ article.main {
             color: $info-color;
             font-size: 15px;
             width: 100%;
+            & > b {
+                color: black;
+                font-size: 14px;
+            }
         }
     }
 }
