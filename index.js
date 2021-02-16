@@ -56,7 +56,7 @@ module.exports = async (tweet, bg = "default") => {
     (o) => o.id === tweet.data.author_id
   );
   const created_at = moment(tweet.data.created_at);
-  const text = tweet.data.text.replace(/ https?:\/\/t.co\/[a-zA-Z0-9]*$/, "");
+  const text = tweet.data.text; //.replace(/ https?:\/\/t.co\/[a-zA-Z0-9]*$/, "");
   const text_tagged = text
     .replace(/(https?:\/\/)([^\s]+)/g, '<a href="$&" target="_blank">$2</a>')
     .replace(
@@ -78,6 +78,7 @@ module.exports = async (tweet, bg = "default") => {
   );
 
   // Filling data in the form
+  main=main.replace("%TWEET_URL%", tweet.data.url ? tweet.data.url : "");
   main = main.replace("%AUTHOR_LINK%", author_link);
   main = main.replace("%PROFILE_IMAGE%", author.profile_image_url);
   main = main.replace("%NAME%", author.name);
@@ -92,11 +93,11 @@ module.exports = async (tweet, bg = "default") => {
 
   main = main.replace(
     "%RETWEETS%",
-    (tweet.data.public_metrics && tweet.data.public_metrics.retweet_count) ? formatNumber(tweet.data.public_metrics.retweet_count) : "-"
+    (tweet.data.public_metrics && tweet.data.public_metrics.retweet_count) ? formatNumber(tweet.data.public_metrics.retweet_count) : "0"
   );
   main = main.replace(
     "%LIKES%",
-    (tweet.data.public_metrics && tweet.data.public_metrics.like_count) ? formatNumber(tweet.data.public_metrics.like_count) : "-"
+    (tweet.data.public_metrics && tweet.data.public_metrics.like_count) ? formatNumber(tweet.data.public_metrics.like_count) : "0"
   );
 
   //
