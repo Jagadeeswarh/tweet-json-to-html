@@ -78,7 +78,7 @@ module.exports = async (tweet, bg = "default") => {
   );
 
   // Filling data in the form
-  main = main.replace("%AUTHOR_LINK%", author_link);
+  main = main.replace("%AUTHOR_LINK%", link);
   main = main.replace("%PROFILE_IMAGE%", author.profile_image_url);
   main = main.replace("%NAME%", author.name);
   main = author.verified
